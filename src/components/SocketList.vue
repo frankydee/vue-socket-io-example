@@ -30,7 +30,7 @@ export default {
     ...mapActions([
       'getConnectedClients',
     ]),
-
+    // FD: Send a message containing a sender and  recipient ID
     clickedOnClient(id) {
       this.$socket.emit('nudge-client', {
         from: this.$socket.id,
@@ -43,6 +43,7 @@ export default {
     this.$socket.on('user-connected', this.getConnectedClients)
     this.$socket.on('user-disconnected', this.getConnectedClients)
 
+    // FD: Calling a function in an external javascript file (../api/index.js)
     this.getConnectedClients()
   },
 }
